@@ -1,0 +1,29 @@
+syntax = "proto3";
+package pb;
+option go_package="github.com/grpc/gobus/service/pb";
+
+service ProviderServices{
+    rpc ProviderSignUp(ProviderDataReq) returns (res);
+    rpc ProviderLogin(LoginReq)returns (res);
+    rpc EditProvider(ProviderDataReq)returns (res);
+    rpc DeleteProviderById(IdReq)returns (res);
+    rpc FindProviderById(IdReq)returns (res);
+    rpc CreateProvider(ProviderDataReq)returns (res);
+}
+message ProviderDataReq{
+    string UserName = 1;
+    string Password = 2;
+    string Email = 3;
+}
+message LoginReq{
+    string Username = 1;
+    string Password = 2;
+}
+message IdReq{
+    uint32 Id = 1;
+}
+message res{
+    string status = 1;
+    string error = 2;
+    string message = 3;
+}
